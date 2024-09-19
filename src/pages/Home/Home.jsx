@@ -14,7 +14,6 @@ const Home = () => {
       <div className={style.container}>
         <img className={style.image} src="./IMG_4486.JPG" alt="" />
       </div>
-      // change back overflow: hidden to overflow-y: hidden in App.css
     );
 };
 
