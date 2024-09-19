@@ -12,7 +12,6 @@ const Home = () => {
   else
     return (
       <div className={style.container}>
-        <img className={style.image} src="./IMG_4486.JPG" alt="" />
       </div>
     );
 };
