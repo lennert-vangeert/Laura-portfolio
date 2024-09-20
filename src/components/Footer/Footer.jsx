@@ -6,7 +6,6 @@ const Footer = () => {
   
   return (
     <div className={style.footer}>
-      &#169; made with &#10084; by Laura Volkaert
     </div>
   );
 };
