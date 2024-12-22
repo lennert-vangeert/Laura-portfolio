@@ -42,7 +42,7 @@ const Header = () => {
   return (
     <header className={style.header}>
       <Link className={`${style.header__item} ${style.main}`} to={ROUTES.home}>
-        <p onMouseOver={handleMouseOver} data-value={originalText}>
+        <p className={style.header__title} onMouseOver={handleMouseOver} data-value={originalText}>
           {text}
         </p>
       </Link>

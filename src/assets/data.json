@@ -2,34 +2,23 @@
   {
     "title": "Test 1",
     "slug": "test-1",
-    "subtitle": "This is a test subtitle for test 1",
-    "description": "This is a test description for test 1",
-    "images": [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150"
-    ]
-  },
-  {
-    "title": "Test 2",
-    "slug": "test-2",
-    "subtitle": "This is a test subtitle for test 2",
-    "description": "This is a test description for test 2",
-    "images": [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150"
-    ]
-  },
-  {
-    "title": "Test 3",
-    "slug": "test-3",
-    "subtitle": "This is a test subtitle for test 3",
-    "description": "This is a test description for test 3",
-    "images": [
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150",
-      "https://via.placeholder.com/150"
-    ]
+    "subtitles": [
+      {
+        "text": "This is a test subtitle for test 1",
+        "media": [
+          "https://via.placeholder.com/150",
+          "https://via.placeholder.com/150",
+          "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"
+        ]
+      },
+      {
+        "text": "This is a test subtitle2 for test 1",
+        "media": [
+          "https://via.placeholder.com/150",
+          "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4"
+        ]
+      }
+    ],
+    "description": "This is a test description for test 1"
   }
 ]

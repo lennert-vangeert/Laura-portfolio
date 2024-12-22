@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 3rem;
-  padding: 20px 15vw;
+  padding: 40px 15vw;
   text-decoration: none;
 }
 .header__item {
@@ -11,9 +11,14 @@
   font-weight: 700;
   text-decoration: none;
   color: var(--text-color);
+  font-family: var(--roboto-mono);
 }
 .header__item .main {
   text-decoration: none;
+}
+.header__title {
+  font-family: var(--urbanist);
+  font-size: 2rem;
 }
 .header__container {
   display: flex;
@@ -61,4 +66,3 @@
     padding: 20px 5vw;
   }
 }
-

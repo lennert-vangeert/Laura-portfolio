@@ -5,6 +5,7 @@ const ROUTES = {
   aboutMe: "/aboutme",
   contact: "/contact",
   notFound: "*",
+  
 };
 
 export default ROUTES;
