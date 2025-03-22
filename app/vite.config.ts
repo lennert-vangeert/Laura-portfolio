@@ -1,14 +1,16 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import path from "path";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import svgr from "vite-plugin-svgr";
 
-// https://vite.dev/config/
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 export default defineConfig({
   plugins: [
     svgr({
       svgrOptions: {
-        // See default plugins: https://svgo.dev/docs/preset-default/#plugins-list
         plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
         svgoConfig: {
           plugins: [
@@ -27,7 +29,6 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // Add aliases here and in the tsconfig.json file
       "@global": path.resolve(__dirname, "src/global"),
       "@common": path.resolve(__dirname, "src/_common"),
     },
