@@ -1,6 +1,6 @@
 import { AppShell, AppShellMain } from "@mantine/core";
 import Header from "../header";
-import Footer from "../footer";
+// import Footer from "../footer";
 import { ReactNode, useMemo } from "react";
 import { useMediaQuery } from "@mantine/hooks";
 import { Outlet } from "react-router-dom";
