@@ -1,4 +1,4 @@
-import { AppShell, AppShellMain, Box } from "@mantine/core";
+import { AppShell, Box } from "@mantine/core";
 import Header from "../header";
 // import Footer from "../footer";
 import { ReactNode, useMemo } from "react";
