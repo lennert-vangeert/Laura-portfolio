@@ -1,0 +1,6 @@
+.image {
+  border: 2px solid #cd4950;
+  height: 250px;
+  width: 100%;
+  object-fit: cover;
+}

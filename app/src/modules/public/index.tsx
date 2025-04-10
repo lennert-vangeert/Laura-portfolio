@@ -1,14 +1,21 @@
-import { Route } from "react-router-dom";
-import ComingSoonPage from "./comingSoon";
+import { RouteObject } from "react-router-dom";
+import PageWrapper from "../sections/pageWrapper";
+import ProjectListPage from "./projectList";
+import ProjectDetailPage from "./projectDetail";
 
-const PublicRoutes = () => {
-  return (
-    <>
-      <Route path="" element={<ComingSoonPage />} />
-      {/* <Route path="aboutus" element={<AboutUs />} />
-      <Route path="404" element={<NotFoundPage />} /> */}
-    </>
-  );
-};
-
-export default PublicRoutes;
+export const publicRoutes: RouteObject[] = [
+  {
+    path: "",
+    element: <PageWrapper />,
+    children: [
+      {
+        index: true,
+        element: <ProjectListPage />,
+      },
+      {
+        path: "projects/:id",
+        element: <ProjectDetailPage />,
+      },
+    ],
+  },
+];
