@@ -7,6 +7,7 @@ import { Image, LoadingOverlay, Text, SimpleGrid } from "@mantine/core";
 import MainSubTitle from "@common/titles/mainSubTitle";
 import SubTitle from "@common/titles/subTitle";
 import classes from "./projectdetailpage.module.css";
+import GoBack from "@common/utilComponents/goBack";
 
 const ProjectDetailPage = () => {
   const { id } = useParams();
@@ -29,6 +30,7 @@ const ProjectDetailPage = () => {
 
   return (
     <>
+      <GoBack path="/" />
       <PageTitle text={String(project?.fields.title)} />
       <MainSubTitle text={String(project?.fields.mainSubTitle)} />
       <Text maw="40rem">{String(project?.fields.description)}</Text>

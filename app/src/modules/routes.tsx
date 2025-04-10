@@ -5,17 +5,12 @@ import {
   useRouteError,
   Navigate,
 } from "react-router-dom";
-import PageWrapper from "./sections/pageWrapper";
 import { I18nProvider, PushLocaleToRoute } from "@global/localization";
 import { publicRoutes } from "./public";
 import ErrorPage from "./misc/errorPage";
 
 function Root({ children }: { children?: React.ReactNode }) {
-  return (
-    <I18nProvider>
-      <PageWrapper>{children ?? <Outlet />}</PageWrapper>
-    </I18nProvider>
-  );
+  return <I18nProvider>{children ?? <Outlet />}</I18nProvider>;
 }
 
 // A simple error boundary that catches route errors and displays the NotFoundPage.

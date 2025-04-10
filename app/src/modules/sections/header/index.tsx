@@ -7,7 +7,7 @@ import { useTranslate } from "@global/localization";
 const Header = () => {
   const { tL } = useTranslate();
   return (
-    <AppShellHeader h={"10vh"} pl="2.5rem" pr="2.5rem">
+    <AppShellHeader pos="relative" h={"10vh"} pl="2.5rem" pr="2.5rem">
       <Group justify="space-between" h="100%">
         <Box>
           <Link to={tL("/")}>
