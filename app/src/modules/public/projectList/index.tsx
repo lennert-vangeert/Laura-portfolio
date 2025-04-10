@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import PageTitle from "@common/titles/pageTitle";
 import { useTranslate } from "@global/localization";
 import classes from "./projectList.module.css";
+import { useMediaQuery } from "@mantine/hooks";
 
 export type ProjectFields = {
   fields: {
@@ -41,6 +42,7 @@ const ProjectListPage = () => {
   const { t } = useTranslate();
   const theme = useMantineTheme();
   const [projects, setProjects] = React.useState<ProjectEntry[]>([]);
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.md})`);
 
   React.useEffect(() => {
     const getEntries = async () => {
@@ -67,7 +69,7 @@ const ProjectListPage = () => {
               component={Link}
               to={`/projects/${project.sys.id}`}
             >
-              <Flex gap="2rem">
+              <Flex direction={isMobile ? "column" : "row"} gap="2rem">
                 <Image
                   // @ts-expect-error
                   src={project.fields.imageList1[0].fields.file.url}
