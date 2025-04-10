@@ -16,7 +16,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
 
   const margin = useMemo(() => {
     if (isMobile) {
-      return "2rem";
+      return "1rem";
     }
     if (isTablet) {
       return "3.5rem";
