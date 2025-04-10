@@ -33,12 +33,14 @@ const ComingSoonPage = () => {
         <Header />
         <Center h="100vh">
           <Stack align="center" gap="md">
-            <Title>{t("Coming soon")}</Title>
-            <Text>
+            <Title ta="center">{t("Coming soon")}</Title>
+            <Text ta="center">
               {t("We're working hard to get things ready. Stay tuned!")}
             </Text>
 
-            <Text>{t("Listen to some music in the meantime.")}</Text>
+            <Text ta="center">
+              {t("Listen to some music in the meantime.")}
+            </Text>
             <Button disabled={showCredits} bg="#fff" onClick={toggleMusic}>
               {t("Play")}
             </Button>

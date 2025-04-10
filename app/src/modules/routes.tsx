@@ -1,61 +1,54 @@
-// Routing.tsx
+import React from "react";
 import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
+  createBrowserRouter,
   Outlet,
-  useParams,
-  useNavigate,
+  useRouteError,
+  Navigate,
 } from "react-router-dom";
-import { useEffect } from "react";
-import i18n from "@global/localization";
-import PublicRoutes from "./public";
-// import PageWrapper from "./sections/pageWrapper";
+import { I18nProvider, PushLocaleToRoute } from "@global/localization";
+import { publicRoutes } from "./public";
+import ErrorPage from "./misc/errorPage";
 
-const Routing = () => {
+function Root({ children }: { children?: React.ReactNode }) {
+  return <I18nProvider>{children ?? <Outlet />}</I18nProvider>;
+}
+
+// A simple error boundary that catches route errors and displays the NotFoundPage.
+function RootErrorBoundary() {
+  const error = useRouteError();
+  console.error("Routing error:", error);
+
+  // If error status is 404, you might choose to render a NotFoundPage or redirect.
   return (
-    <BrowserRouter>
-      {/* <PageWrapper> */}
-      <Routes>
-        {/* Redirect root URL to include the current language */}
-        <Route
-          path="/"
-          element={<Navigate to={`/${i18n.language}`} replace />}
-        />
-
-        {/* Parent route that includes language */}
-        <Route path=":language" element={<LanguageWrapper />}>
-          {/* Nested routes */}
-          {PublicRoutes()}
-        </Route>
-        {/* Redirect any invalid paths */}
-        <Route
-          path="*"
-          element={<Navigate to={`/${i18n.language}/404`} replace />}
-        />
-      </Routes>
-      {/* </PageWrapper> */}
-    </BrowserRouter>
+    <Root>
+      <ErrorPage />
+    </Root>
   );
-};
+}
 
-const LanguageWrapper = () => {
-  const navigate = useNavigate();
-  const { language } = useParams();
+// Define our application routes
+const appRoutes = [
+  {
+    path: "/:maybeLang?",
+    element: <PushLocaleToRoute />,
+    children: [
+      ...publicRoutes,
+      // If you had any private or other routes, they’d go here
+    ],
+  },
+];
 
-  useEffect(() => {
-    const currentLang = i18n.language;
-    if (!language) {
-      // If no language in URL, add it and redirect
-      navigate(`/${currentLang}`);
-    } else if (language !== currentLang) {
-      // Sync the URL language with i18next
-      i18n.changeLanguage(language);
-    }
-  }, [language, navigate]);
-
-  return <Outlet />; // Render nested routes here
-};
-
-export default Routing;
+// Create the router using the new data APIs, adding an errorElement to handle errors
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <RootErrorBoundary />,
+    children: appRoutes,
+  },
+  // Fallback route in case of invalid paths; feel free to customize the redirect destination
+  {
+    path: "*",
+    element: <Navigate to="/" replace />,
+  },
+]);
