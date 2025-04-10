@@ -1,6 +1,6 @@
 {
   "name": "seed",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
     "dev": "echo \"Error: Try running this in the app or api folder.\"",

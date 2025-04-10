@@ -1,6 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import PageWrapper from "../sections/pageWrapper";
-import ComingSoonPage from "./comingSoon";
+import ProjectListPage from "./projectList";
+import ProjectDetailPage from "./projectDetail";
 
 export const publicRoutes: RouteObject[] = [
   {
@@ -9,7 +10,11 @@ export const publicRoutes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <ComingSoonPage />,
+        element: <ProjectListPage />,
+      },
+      {
+        path: "projects/:id",
+        element: <ProjectDetailPage />,
       },
     ],
   },

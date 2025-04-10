@@ -100,7 +100,7 @@ const theme: MantineThemeOverride = {
     ],
   },
   // Typography
-  fontFamily: "Roboto, Helvetica",
+  fontFamily: "Roboto, sans-serif",
   fontSizes: {
     xs: "0.6875rem",
     sm: "0.875rem",
@@ -116,22 +116,22 @@ const theme: MantineThemeOverride = {
     xl: "1.65",
   },
   headings: {
-    fontFamily: "Roboto, Helvetica",
+    fontFamily: "Roboto Mono, monospace",
     textWrap: "wrap",
     sizes: {
       h1: {
-        fontSize: "2.25rem",
-        fontWeight: "900",
+        fontSize: "5rem",
+        fontWeight: "100",
         lineHeight: "1.5",
       },
       h2: {
-        fontSize: "2rem",
-        fontWeight: "900",
+        fontSize: "3rem",
+        fontWeight: "400",
         lineHeight: "1.5",
       },
       h3: {
-        fontSize: "1.75rem",
-        fontWeight: "900",
+        fontSize: "1.5rem",
+        fontWeight: "100",
         lineHeight: "1.5",
       },
       h4: {
