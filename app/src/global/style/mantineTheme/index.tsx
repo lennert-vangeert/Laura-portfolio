@@ -18,9 +18,9 @@ const colors = {
   backgroundTransparent: "transparent",
   warning: "#FFD676",
   default: {
-    primary: "#0A78F2",
-    hover: "#1562B7",
-    focus: "#489DFC",
+    primary: "red",
+    hover: "red",
+    focus: "red",
     active: "#048C8C",
     disabled: "#E0E7F0",
   },
