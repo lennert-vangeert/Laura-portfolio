@@ -17,6 +17,7 @@ import PageTitle from "@common/titles/pageTitle";
 import { useTranslate } from "@global/localization";
 import classes from "./projectList.module.css";
 import { useMediaQuery } from "@mantine/hooks";
+import Head from "@global/head";
 
 export type ProjectFields = {
   fields: {
@@ -57,6 +58,7 @@ const ProjectListPage = () => {
 
   return (
     <>
+      <Head title="Laura Volkaert" description="Laura Volkaert" />
       <PageTitle line={false} text={t("My projects")} />
       <Box>
         {projects.map((project) => (
@@ -67,7 +69,9 @@ const ProjectListPage = () => {
               td="none"
               c={theme.black}
               component={Link}
-              to={`/projects/${project.sys.id}`}
+              to={`/projects/${encodeURIComponent(
+                String(project.fields.title)
+              )}`}
             >
               <Flex direction={isMobile ? "column" : "row"} gap="2rem">
                 <Image
@@ -79,9 +83,9 @@ const ProjectListPage = () => {
                 />
                 <Stack justify="center" gap="2rem" maw="100%">
                   <Title mt="1rem" order={3}>
-                    {String(project.fields.title)}
+                    {t(String(project.fields.title))}
                   </Title>
-                  <Text>{String(project.fields.description)}</Text>
+                  <Text>{t(String(project.fields.description))}</Text>
                 </Stack>
               </Flex>
             </Anchor>

@@ -8,14 +8,21 @@ import MainSubTitle from "@common/titles/mainSubTitle";
 import SubTitle from "@common/titles/subTitle";
 import classes from "./projectdetailpage.module.css";
 import GoBack from "@common/utilComponents/goBack";
+import { useTranslate } from "@global/localization";
+import Head from "@global/head";
 
 const ProjectDetailPage = () => {
-  const { id } = useParams();
+  const { title } = useParams();
   const [project, setProject] = React.useState<ProjectEntry>();
+  const { t } = useTranslate();
 
   React.useEffect(() => {
     const getEntry = async () => {
-      const response = await contentfulClient.getEntries({ "sys.id": id });
+      // get entry by title
+      const response = await contentfulClient.getEntries({
+        content_type: "project",
+        "fields.title": title,
+       });
       console.log(response.items);
 
       const typedEntry = response.items as ProjectEntry[];
@@ -30,10 +37,14 @@ const ProjectDetailPage = () => {
 
   return (
     <>
+      <Head
+        title={String(project?.fields.title)}
+        description={String(project?.fields.description)}
+      />
       <GoBack path="/" />
-      <PageTitle text={String(project?.fields.title)} />
-      <MainSubTitle text={String(project?.fields.mainSubTitle)} />
-      <Text maw="40rem">{String(project?.fields.description)}</Text>
+      <PageTitle text={t(String(project?.fields.title))} />
+      <MainSubTitle text={t(String(project?.fields.mainSubTitle))} />
+      <Text maw="40rem">{t(String(project?.fields.description))}</Text>
 
       {Array.isArray(project?.fields.subTitles) &&
         project.fields.subTitles.map((subtitle, index) => {
@@ -46,7 +57,7 @@ const ProjectDetailPage = () => {
 
           return (
             <React.Fragment key={index}>
-              <SubTitle text={subtitle} />
+              <SubTitle text={t(subtitle)} />
               {/* Using SimpleGrid for layout */}
               <SimpleGrid
                 mb="10rem"

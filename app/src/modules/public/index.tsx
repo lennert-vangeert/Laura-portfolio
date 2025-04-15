@@ -13,7 +13,7 @@ export const publicRoutes: RouteObject[] = [
         element: <ProjectListPage />,
       },
       {
-        path: "projects/:id",
+        path: "projects/:title",
         element: <ProjectDetailPage />,
       },
     ],

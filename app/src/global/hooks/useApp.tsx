@@ -14,8 +14,8 @@ type AppState = {
 
 export default create<AppState>()(
   subscribeWithSelector((set) => ({
-    appTitle: "APP",
-    author: "Lennert Van Geert",
+    appTitle: "Portfolio",
+    author: "Laura Volkaert",
     theme: "light",
     setTheme: (theme: string) =>
       set({
@@ -23,7 +23,7 @@ export default create<AppState>()(
       }),
 
     //SEO
-    keyWords: "app, react, zustand, mantine",
+    keyWords: "portfolio, laura, volkaert, design, branding",
     image: "default-image-url.jpg",
   }))
 );
