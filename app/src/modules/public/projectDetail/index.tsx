@@ -59,14 +59,14 @@ const ProjectDetailPage = () => {
             <React.Fragment key={index}>
               <SubTitle text={t(subtitle)} />
               {/* Using SimpleGrid for layout */}
-              <SimpleGrid
+                <SimpleGrid
                 mb="10rem"
-                cols={3}
+                cols={4}
                 spacing="md"
                 style={{
-                  gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
                 }}
-              >
+                >
                 {images?.map((img, imgIndex) => (
                   <Image
                     className={classes.image}

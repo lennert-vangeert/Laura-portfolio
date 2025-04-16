@@ -60,10 +60,11 @@ const ProjectListPage = () => {
     <>
       <Head title="Laura Volkaert" description="Laura Volkaert" />
       <PageTitle line={false} text={t("My projects")} />
-      <Box>
+
+      <Box mb="5rem">
         {projects.map((project) => (
           <React.Fragment key={project.sys.id}>
-            <Divider mb="1rem" size={2} color="red" />
+            <Divider my="1rem" size={2} color="red" />
             <Anchor
               className={classes.projectItem}
               td="none"
@@ -73,13 +74,20 @@ const ProjectListPage = () => {
                 String(project.fields.title)
               )}`}
             >
-              <Flex direction={isMobile ? "column" : "row"} gap="2rem">
+              <Flex
+                px={!isMobile ? "10rem" : undefined}
+                direction={isMobile ? "column" : "row"}
+                gap="2rem"
+              >
                 <Image
                   // @ts-expect-error
                   src={project.fields.imageList1[0].fields.file.url}
-                  width="100%"
-                  height="auto"
+                  width="15rem"
+                  height="100%"
                   mah="15rem"
+                  style={{
+                    aspectRatio: 1 / 1,
+                  }}
                 />
                 <Stack justify="center" gap="2rem" maw="100%">
                   <Title mt="1rem" order={3}>
