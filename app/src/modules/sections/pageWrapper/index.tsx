@@ -1,38 +1,84 @@
-import { AppShell, Box } from "@mantine/core";
-import Header from "../header";
-// import Footer from "../footer";
-import { ReactNode, useMemo } from "react";
+import { AppShell, Box, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { ReactNode, useEffect, useMemo } from "react";
 import { Outlet } from "react-router-dom";
-import style from "./pageWrapper.module.css";
+
+import Header from "../header";
+
+// Redux
+import ScrollToTop from "@common/scrollToTop";
+import { AppDispatch } from "@global/store/store";
+import {
+  setIsBigTablet,
+  setIsMobile,
+  setIsSmallMobile,
+  setIsTablet,
+  setMainMargin,
+} from "@global/store/uiSlice";
+import { useDispatch } from "react-redux";
 
 type PageWrapperProps = {
+  /** Children to be rendered inside the PageWrapper */
   children?: ReactNode;
 };
 
+/**
+ * PageWrapper component
+ * @param {PageWrapperProps} props - Props for the PageWrapper component
+ * @returns {JSX.Element}
+ * This component is used to wrap the main content of the application.
+ * It also pushes various UI-related flags into Redux.
+ */
 const PageWrapper = ({ children }: PageWrapperProps) => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
-  const isTablet = useMediaQuery("(min-width: 769px) and (max-width: 1024px)");
+  const theme = useMantineTheme();
+  const dispatch = useDispatch<AppDispatch>();
+
+  // ----- MEDIA QUERY BOOLEANS -----
+  const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
+  const isSmallMobile = useMediaQuery(`(max-width: ${theme.breakpoints.xs})`);
+  const isTablet = useMediaQuery(`(max-width: ${theme.breakpoints.lg})`);
+  const isBigTablet = useMediaQuery(`(max-width: ${theme.breakpoints.xl})`);
 
   const margin = useMemo(() => {
-    if (isMobile) {
-      return "1rem";
-    }
-    if (isTablet) {
-      return "3.5rem";
-    }
-    return "5rem";
+    if (isMobile) return "2.5rem";
+    if (isTablet) return "5rem";
+    return "9rem";
   }, [isMobile, isTablet]);
 
+  const gridCols = useMemo(() => {
+    if (isTablet) return 1;
+    if (isBigTablet) return 2;
+    return 3;
+  }, [isTablet, isBigTablet]);
+
+  // Sync UI-related flags into Redux whenever any of these change
+  useEffect(() => {
+    dispatch(setIsMobile(isMobile));
+    dispatch(setIsSmallMobile(isSmallMobile));
+    dispatch(setIsTablet(isTablet));
+    dispatch(setIsBigTablet(isBigTablet));
+    dispatch(setMainMargin(margin));
+  }, [
+    dispatch,
+    isMobile,
+    isSmallMobile,
+    isTablet,
+    isBigTablet,
+    gridCols,
+    margin,
+  ]);
+
   return (
-    <AppShell w="100%" m={0}>
-      <Header />
-      <Box className={style.main} ml={margin} mr={margin}>
-        {/* Render direct children if provided, otherwise fallback to nested routes */}
-        {children ?? <Outlet />}
-      </Box>
-      {/* <Footer /> */}
-    </AppShell>
+    <>
+      <ScrollToTop />
+      <AppShell>
+        <Header />
+        <Box mt="10vh">
+          {/* Render direct children if provided, otherwise fallback to nested routes */}
+          {children ?? <Outlet />}
+        </Box>
+      </AppShell>
+    </>
   );
 };
 

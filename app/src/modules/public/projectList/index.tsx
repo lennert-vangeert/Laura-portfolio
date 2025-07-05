@@ -13,7 +13,6 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { Link } from "react-router-dom";
-import PageTitle from "@common/titles/pageTitle";
 import { useTranslate } from "@global/localization";
 import classes from "./projectList.module.css";
 import { useMediaQuery } from "@mantine/hooks";
@@ -59,7 +58,6 @@ const ProjectListPage = () => {
   return (
     <>
       <Head title="Laura Volkaert" description="Laura Volkaert" />
-      <PageTitle line={false} text={t("My projects")} />
 
       <Box mb="5rem">
         {projects.map((project) => (
@@ -99,6 +97,9 @@ const ProjectListPage = () => {
             </Anchor>
           </React.Fragment>
         ))}
+      </Box>
+      <Box id="contact">
+        contact
       </Box>
     </>
   );

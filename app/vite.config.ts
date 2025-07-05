@@ -19,6 +19,18 @@ export default defineConfig({
               name: "preset-default",
               params: { overrides: { removeViewBox: false } },
             },
+            {
+              name: "inlineStyles",
+              params: {
+                onlyMatchedOnce: false,
+              },
+            },
+            {
+              name: "prefixIds",
+              params: {
+                prefixIds: true,
+              },
+            },
           ],
         },
       },
@@ -32,6 +44,8 @@ export default defineConfig({
     alias: {
       "@global": path.resolve(__dirname, "src/global"),
       "@common": path.resolve(__dirname, "src/_common"),
+      "@assets": path.resolve(__dirname, "src/assets"),
+      "@tabler/icons-react": "@tabler/icons-react/dist/esm/icons/index.mjs", // Adjust to fix chunck problem with tabler icons https://github.com/tabler/tabler-icons/issues/1233#issuecomment-2428245119
     },
   },
 });

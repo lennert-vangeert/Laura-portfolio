@@ -17,6 +17,8 @@
     "node": "22.14.0"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
+    "react-redux": "^9.2.0",
     "vite": "^6.1.0"
   },
   "devDependencies": {

@@ -8,20 +8,20 @@ import type * as React from "react";
 // Color information
 // Change for each project
 const colors = {
-  text: "#FFFFFF",
+  text: "#000",
   white: "#FFFFFF",
   black: "#000000",
   dark: "#293644",
   medium: "#6F7881",
   light: "#B9C2CC",
-  mainBackground: "#293644", // background for mantine components
+  mainBackground: "#FDFDFD", // background for mantine components
   backgroundTransparent: "transparent",
   warning: "#FFD676",
   default: {
-    primary: "red",
-    hover: "red",
-    focus: "red",
-    active: "#048C8C",
+    primary: "#000",
+    hover: "#EB4929",
+    focus: "#EB4929",
+    active: "#EB4929",
     disabled: "#E0E7F0",
   },
 };
@@ -44,7 +44,7 @@ const spacing: MantineBreakpointsValues = {
 };
 
 const borderRadii = {
-  button: "4px",
+  button: "20px",
   input: "4px", // All Mantine inputs, excluding checkboxes
 };
 
@@ -74,6 +74,18 @@ const theme: MantineThemeOverride = {
       "#FFFF05", // Shade 9 is unused. You should never see this color
       "#FFFF06", // Shade 10 is unused. You should never see this color
     ],
+    styling: [
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+      "#EB4929",
+    ],
     error: [
       "#ffebee",
       "#fbd8da",
@@ -100,7 +112,7 @@ const theme: MantineThemeOverride = {
     ],
   },
   // Typography
-  fontFamily: "Roboto, sans-serif",
+  fontFamily: "Nunito, sans-serif",
   fontSizes: {
     xs: "0.6875rem",
     sm: "0.875rem",
@@ -116,7 +128,7 @@ const theme: MantineThemeOverride = {
     xl: "1.65",
   },
   headings: {
-    fontFamily: "Roboto Mono, monospace",
+    fontFamily: "Nunito, sans-serif",
     textWrap: "wrap",
     sizes: {
       h1: {
@@ -191,10 +203,6 @@ const theme: MantineThemeOverride = {
       styles: {
         root: {
           borderRadius: borderRadii.button,
-        },
-        outline: {
-          borderRadius: borderRadii.button,
-          borderImage: borderWidths.buttonOutlineVariant,
         },
       },
     },
