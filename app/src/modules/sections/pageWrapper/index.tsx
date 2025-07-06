@@ -73,7 +73,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
       <ScrollToTop />
       <AppShell>
         <Header />
-        <Box mt="10vh">
+        <Box>
           {/* Render direct children if provided, otherwise fallback to nested routes */}
           {children ?? <Outlet />}
         </Box>

@@ -3,18 +3,21 @@ import { useParams } from "react-router-dom";
 import { ProjectEntry } from "../projectList";
 import { contentfulClient } from "@global/contentful/client";
 import PageTitle from "@common/titles/pageTitle";
-import { Image, LoadingOverlay, Text, SimpleGrid } from "@mantine/core";
+import { Image, LoadingOverlay, Text, SimpleGrid, Box } from "@mantine/core";
 import MainSubTitle from "@common/titles/mainSubTitle";
 import SubTitle from "@common/titles/subTitle";
 import classes from "./projectdetailpage.module.css";
 import GoBack from "@common/utilComponents/goBack";
 import { useTranslate } from "@global/localization";
 import Head from "@global/head";
+import { useSelector } from "react-redux";
+import { RootState } from "@global/store/store";
 
 const ProjectDetailPage = () => {
   const { title } = useParams();
   const [project, setProject] = React.useState<ProjectEntry>();
   const { t } = useTranslate();
+  const { mainMargin } = useSelector((state: RootState) => state.ui);
 
   React.useEffect(() => {
     const getEntry = async () => {
@@ -36,7 +39,7 @@ const ProjectDetailPage = () => {
   }
 
   return (
-    <>
+    <Box mx={mainMargin}>
       <Head
         title={String(project?.fields.title)}
         description={String(project?.fields.description)}
@@ -81,7 +84,7 @@ const ProjectDetailPage = () => {
             </React.Fragment>
           );
         })}
-    </>
+    </Box>
   );
 };
 

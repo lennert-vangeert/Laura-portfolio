@@ -24,7 +24,7 @@ const Header = () => {
   );
   const [opened, { open, close }] = useDisclosure();
   return (
-    <AppShellHeader pos="relative" h="10vh" px={mainMargin}>
+    <AppShellHeader pos="relative" h="10vh" px={mainMargin} withBorder={false}>
       {isTablet ? (
         <>
           <Group justify="space-between" h="100%">

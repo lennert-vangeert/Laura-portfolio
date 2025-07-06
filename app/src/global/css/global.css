@@ -5,6 +5,10 @@
 body {
   background-color: var(--mantine-color-body);
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
 /* button */
 .mantine-Button-root {
