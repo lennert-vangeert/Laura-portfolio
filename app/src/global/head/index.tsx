@@ -1,4 +1,3 @@
-import useApp from "@global/hooks/useApp";
 import { Helmet } from "react-helmet-async";
 
 type Props = {
@@ -8,9 +7,10 @@ type Props = {
   imageURL?: string;
 };
 
+const appTitle = "Portfolio";
+const keyWords = "portfolio, laura, volkaert, design, branding";
+const author = "Laura Volkaert";
 const Head = ({ title, description, SEODisabled = false, imageURL }: Props) => {
-  const appTitle = useApp((state) => state.appTitle);
-  const keyWords = useApp((state) => state.keyWords);
 
   return (
     <>
@@ -47,7 +47,6 @@ const SEOData = ({
   imageURL = "default-image-url.jpg", // Default image if not provided
   keywords,
 }: SEODataProps) => {
-  const author = useApp((state) => state.author);
   return (
     <>
       {/* Basic Meta Tags */}
