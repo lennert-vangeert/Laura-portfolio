@@ -13,9 +13,11 @@ import { Navigate, Outlet, useLocation, useParams } from "react-router-dom";
 // Import your translation files and assets
 import en from "./_en.json";
 import nl from "./_nl.json";
+// Locale ids + default live in a pure module so scripts (sitemap) can import
+// them without pulling in i18next/react.
+import { type Locale, localeIds, defaultLocale } from "./locales";
 
-// Define supported locales and their types
-export type Locale = "en" | "nl";
+export type { Locale };
 
 export type LocaleInfo = {
   id: Locale;
@@ -23,13 +25,15 @@ export type LocaleInfo = {
   translations: object;
 };
 
-export const locales: LocaleInfo[] = [
-  { id: "en", label: "English", translations: en },
-  { id: "nl", label: "Nederlands", translations: nl },
-];
+const localeMeta: Record<Locale, { label: string; translations: object }> = {
+  en: { label: "English", translations: en },
+  nl: { label: "Nederlands", translations: nl },
+};
 
-// Set the default locale
-const defaultLocale: Locale = "nl";
+export const locales: LocaleInfo[] = localeIds.map((id) => ({
+  id,
+  ...localeMeta[id],
+}));
 
 // Type guard for locales
 function isLocale(value: unknown): value is Locale {

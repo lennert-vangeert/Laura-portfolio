@@ -6,30 +6,23 @@ import p5 from "./p5.jpg";
 import p6 from "./p6.jpg";
 import p7 from "./p7.jpg";
 import p8 from "./p8.jpg";
+import { projectMeta, type ProjectMeta } from "./meta";
 
-export type Project = {
-  /** URL segment for the project's detail page. */
-  slug: string;
-  /** i18n key holding the project's full display title. */
-  titleKey: string;
+export type Project = ProjectMeta & {
   /** Thumbnail image, reused by the Projects masonry and Hero tiles. */
   image: string;
 };
 
 /**
- * Ordered list of projects, kept in p1..p8 order so the Projects masonry's
- * explicit `cell{i+1}` placement stays correct.
+ * Ordered list of projects: the pure `projectMeta` (slug + titleKey) zipped
+ * with the p1..p8 images. Order is the single coupling point — keep `projectMeta`
+ * in the same order as the images below so the masonry `cell{i+1}` placement stays correct.
  */
-export const projects: Project[] = [
-  { slug: "omleegvallers-gazet", titleKey: "projects.omleegvallers-gazet.title", image: p1 },
-  { slug: "jazz-in-t-park", titleKey: "projects.jazz-in-t-park.title", image: p2 },
-  { slug: "regenkreet", titleKey: "projects.regenkreet.title", image: p3 },
-  { slug: "the-models-guide", titleKey: "projects.the-models-guide.title", image: p4 },
-  { slug: "twiin", titleKey: "projects.twiin.title", image: p5 },
-  { slug: "tarot", titleKey: "projects.tarot.title", image: p6 },
-  { slug: "clb-kies", titleKey: "projects.clb-kies.title", image: p7 },
-  { slug: "crosby-stills-nash", titleKey: "projects.crosby-stills-nash.title", image: p8 },
-];
+const images = [p1, p2, p3, p4, p5, p6, p7, p8];
+export const projects: Project[] = projectMeta.map((meta, i) => ({
+  ...meta,
+  image: images[i],
+}));
 
 /** Ordered list of project images, reused by the Projects masonry and the Hero tiles. */
 export const projectImages: string[] = projects.map((p) => p.image);
