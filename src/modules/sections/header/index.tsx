@@ -40,15 +40,15 @@ const Header = () => {
         ) : (
           <Group gap={25} align="center" wrap="nowrap">
             <Group gap={20} align="center" wrap="nowrap">
-              <Link to="#" className={styles.navLink}>
+              <Link to={tL("/#projects")} className={styles.navLink}>
                 {t("Projects")}
               </Link>
               <Box className={styles.divider} />
-              <Link to="#" className={styles.navLink}>
+              <Link to={tL("/#about")} className={styles.navLink}>
                 {t("About me")}
               </Link>
             </Group>
-            <PillButton to="#">{t("Contact")}</PillButton>
+            <PillButton to={tL("/#contact")}>{t("Contact")}</PillButton>
             <LanguageSelect />
           </Group>
         )}
@@ -63,13 +63,13 @@ const Header = () => {
         overlayProps={{ blur: 4 }}
       >
         <Stack gap="xl" align="start" mt="xl">
-          <Link to="#" className={styles.navLink} onClick={close}>
+          <Link to={tL("/#projects")} className={styles.navLink} onClick={close}>
             {t("Projects")}
           </Link>
-          <Link to="#" className={styles.navLink} onClick={close}>
+          <Link to={tL("/#about")} className={styles.navLink} onClick={close}>
             {t("About me")}
           </Link>
-          <PillButton to="#" onClick={close}>
+          <PillButton to={tL("/#contact")} onClick={close}>
             {t("Contact")}
           </PillButton>
         </Stack>

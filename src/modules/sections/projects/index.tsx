@@ -11,7 +11,7 @@ const Projects = () => {
   const { mainMargin } = useSelector((state: RootState) => state.ui);
 
   return (
-    <Box component="section" className={styles.projects}>
+    <Box component="section" id="projects" className={styles.projects}>
       <Box px={mainMargin}>
         <h2 className={styles.title}>{t("projects.title")}</h2>
         <div className={styles.masonry}>

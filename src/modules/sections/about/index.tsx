@@ -17,7 +17,7 @@ const About = () => {
   const secondaryCv = isDutch ? "about.cvEnglish" : "about.cvDutch";
 
   return (
-    <Box component="section" className={styles.about} px={mainMargin}>
+    <Box component="section" id="about" className={styles.about} px={mainMargin}>
       <div className={styles.inner}>
         <div className={styles.content}>
         <Box>

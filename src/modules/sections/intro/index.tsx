@@ -35,7 +35,7 @@ const Intro = () => {
         <p className={styles.tagline}>{t("intro.tagline")}</p>
         <h2 className={styles.title}>{t("intro.title")}</h2>
         <p className={styles.paragraph}>{t("intro.paragraph")}</p>
-        <Link to="#" className={styles.cta}>
+        <Link to="mailto:laura@lauravolkaert.be" className={styles.cta}>
           {t("intro.cta")}
           <IconArrowRight size={28} stroke={2} />
         </Link>

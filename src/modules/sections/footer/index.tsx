@@ -40,7 +40,7 @@ const Footer = ({ variant = "normal" }: FooterProps) => {
   const { mainMargin } = useSelector((state: RootState) => state.ui);
 
   return (
-    <Box component="footer" className={styles.footer}>
+    <Box component="footer" id="contact" className={styles.footer}>
       {variant === "big" && (
         <Box px={mainMargin} className={styles.contact}>
           <h2 className={styles.heading}>
