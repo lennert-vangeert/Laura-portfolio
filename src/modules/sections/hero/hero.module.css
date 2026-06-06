@@ -1,0 +1,58 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 100px);
+  min-height: calc(100dvh - 100px);
+  padding-top: clamp(40px, 8vh, 120px);
+  padding-bottom: clamp(24px, 5vh, 56px);
+  overflow-x: clip;
+}
+
+.title {
+  align-self: flex-start;
+  width: fit-content;
+  margin: 0;
+  font-family: "Rozha One", serif;
+  font-weight: 400;
+  color: var(--mantine-color-brand-5);
+  font-size: clamp(64px, 14vw, 170px);
+  line-height: 0.95;
+}
+
+.line {
+  display: block;
+  width: fit-content;
+}
+
+/* Only the first line ("Laura") is tilted; "Volkaert" stays straight. */
+.line:first-child {
+  transform: rotate(-7deg);
+  transform-origin: left center;
+}
+
+.line:nth-child(2) {
+  margin-left: 0.4em;
+}
+
+.scroll {
+  align-self: flex-end;
+  color: var(--mantine-color-brand-5);
+  animation: bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll {
+    animation: none;
+  }
+}

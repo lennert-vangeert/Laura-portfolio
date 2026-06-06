@@ -1,0 +1,17 @@
+/* Fonts (Nunito + Rozha One) are loaded via <link> in index.html with
+   preconnect, so first paint isn't blocked on a render-blocking @import. */
+
+/* Title */
+/* .rozha-one-regular {
+  font-family: "Rozha One", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Text */
+/* .nunito-<uniquifier> {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}  */

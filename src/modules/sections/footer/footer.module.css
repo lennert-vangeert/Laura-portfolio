@@ -1,0 +1,147 @@
+.footer {
+  width: 100%;
+}
+
+/* ----- Big variant: cream contact section ----- */
+.contact {
+  background-color: var(--mantine-color-cream-5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(40px, 8vw, 140px);
+  padding-top: clamp(60px, 9vw, 140px);
+  padding-bottom: clamp(60px, 9vw, 140px);
+}
+
+.heading {
+  font-family: "Rozha One", serif;
+  font-weight: 400;
+  color: var(--mantine-color-brand-5);
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 1.15;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* "Just say hi!" sits indented under the first line, as in the mockup. */
+.headingLine2 {
+  padding-left: 1.1em;
+}
+
+/* The diagonal navy line between the heading and the contact list. */
+.divider {
+  flex: 0 0 auto;
+  width: 3px;
+  align-self: stretch;
+  min-height: clamp(180px, 26vw, 300px);
+  background-color: var(--mantine-color-brand-5);
+  border-radius: 2px;
+  transform: rotate(-20deg);
+}
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(24px, 3vw, 44px);
+}
+
+/* Each row steps further right, like the mockup. */
+.links li:nth-child(2) {
+  margin-left: clamp(20px, 3vw, 56px);
+}
+.links li:nth-child(3) {
+  margin-left: clamp(40px, 6vw, 112px);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: clamp(16px, 1.5vw, 26px);
+  color: var(--mantine-color-brand-5);
+  transition: opacity 0.2s ease;
+}
+
+.contactLink:hover {
+  opacity: 0.7;
+}
+
+.contactLink svg {
+  flex: 0 0 auto;
+}
+
+/* ----- Navy bottom bar (both variants) ----- */
+.bar {
+  background-color: var(--mantine-color-brand-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.copyright,
+.credit {
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--mantine-color-cream-5);
+  margin: 0;
+}
+
+.creditLink {
+  color: var(--mantine-color-cream-5);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.creditLink:hover {
+  opacity: 0.7;
+}
+
+/* ----- Tablet/mobile: stack the contact section, hide the diagonal line ----- */
+@media (max-width: 58.75rem) {
+  .contact {
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(32px, 7vw, 56px);
+  }
+  .divider {
+    display: none;
+  }
+  /* Center the heading once stacked (drop the desktop indent). */
+  .heading {
+    align-items: center;
+    text-align: center;
+  }
+  .headingLine2 {
+    padding-left: 0;
+  }
+  /* Links flow next to each other and wrap as the screen narrows. */
+  .links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  /* Drop the horizontal stagger once the section is stacked. */
+  .links li:nth-child(2),
+  .links li:nth-child(3) {
+    margin-left: 0;
+  }
+}
+
+/* ----- Small mobile: stack the bottom bar ----- */
+@media (max-width: 36rem) {
+  .bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}

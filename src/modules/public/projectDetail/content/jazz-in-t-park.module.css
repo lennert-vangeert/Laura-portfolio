@@ -1,0 +1,120 @@
+/* Full-bleed editorial masonry: three bands, each a 2-col grid with two
+   independent column flows so columns interlock. Outer images touch the page
+   edges; only text + nav get a gutter. */
+.page {
+  --gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.intro,
+.body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--mantine-color-brand-5);
+  white-space: pre-line;
+  padding-block: clamp(16px, 3vw, 40px);
+}
+
+.intro {
+  padding-left: clamp(24px, 6vw, 100px);
+}
+
+.body {
+  padding-right: clamp(24px, 6vw, 100px);
+}
+
+/* posters */
+.echo,
+.jazzNova {
+  aspect-ratio: 4 / 3;
+}
+
+/* sonic — slightly taller so band B's left poster reads bigger */
+.sonic {
+  aspect-ratio: 10 / 7.5;
+}
+
+/* insta grid — kept shorter so band A's left column doesn't tower over echo */
+.insta {
+  aspect-ratio: 16 / 9;
+}
+
+/* folder mockups are wider */
+.folderCover,
+.folderInner {
+  aspect-ratio: 3 / 2;
+}
+
+.bandA {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.bandB {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.bandC {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.navRow {
+  margin-top: auto;
+  padding-bottom: clamp(8px, 2vw, 32px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 64rem) {
+  .bandA,
+  .bandB,
+  .bandC {
+    grid-template-columns: 1fr;
+  }
+  .intro,
+  .body {
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+  .navRow {
+    margin-top: clamp(24px, 4vw, 48px);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 36rem) {
+  .insta,
+  .echo,
+  .sonic,
+  .jazzNova,
+  .folderCover,
+  .folderInner {
+    aspect-ratio: auto;
+  }
+}

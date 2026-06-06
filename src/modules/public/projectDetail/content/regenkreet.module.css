@@ -1,0 +1,78 @@
+/* Full-bleed two-column block. Outer images touch the page edges; only the
+   text and nav get a gutter. Columns flow independently so the big staand
+   poster on the right interlocks with the text + liggend on the left. */
+.page {
+  --gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--mantine-color-brand-5);
+  white-space: pre-line;
+  padding-left: clamp(24px, 6vw, 100px);
+  padding-block: clamp(16px, 3vw, 40px);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.liggend {
+  aspect-ratio: 4 / 3;
+}
+
+.staand {
+  aspect-ratio: 4 / 3;
+}
+
+.navRow {
+  margin-top: auto;
+  padding-bottom: clamp(8px, 2vw, 32px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 64rem) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .body {
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+  .navRow {
+    margin-top: clamp(24px, 4vw, 48px);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 36rem) {
+  .liggend,
+  .staand {
+    aspect-ratio: auto;
+  }
+}

@@ -1,0 +1,21 @@
+.shell {
+  width: 100%;
+  padding-top: clamp(32px, 5vw, 80px);
+  padding-bottom: clamp(48px, 6vw, 100px);
+}
+
+.title {
+  font-family: "Rozha One", serif;
+  font-style: normal;
+  font-weight: 400;
+  /* 96px desktop target; clamp keeps a sensible mobile floor. */
+  font-size: clamp(32px, 7vw, 80px);
+  line-height: 1.15;
+  color: var(--mantine-color-brand-5);
+  margin: 0 0 clamp(32px, 4vw, 64px);
+}
+
+/* Full-bleed: content owns its own spacing and reaches the page edges. */
+.content {
+  width: 100%;
+}

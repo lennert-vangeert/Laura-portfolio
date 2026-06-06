@@ -1,0 +1,55 @@
+.marquee {
+  --gap: clamp(28px, 5vw, 75px);
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--mantine-color-brand-5);
+  padding-top: clamp(20px, 3vw, 35px);
+  padding-bottom: clamp(20px, 3vw, 35px);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 25s linear infinite;
+}
+
+.group {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  /* Trailing space so the spacing across the loop seam stays even. */
+  padding-right: var(--gap);
+}
+
+.word,
+.sep {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(22px, 3vw, 32px);
+  line-height: 1;
+  color: var(--mantine-color-cream-5);
+  white-space: nowrap;
+}
+
+.word {
+  font-weight: 400;
+}
+
+.sep {
+  font-weight: 600;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

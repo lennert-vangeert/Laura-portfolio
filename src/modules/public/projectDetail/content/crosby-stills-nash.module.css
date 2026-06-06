@@ -1,0 +1,102 @@
+/* Full-bleed two-column block. Outer images touch the page edges; only the
+   text and nav get a gutter. The two columns flow independently so the tall
+   vinyl on the right interlocks with the stacked left column. */
+.page {
+  --gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.intro,
+.body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--mantine-color-brand-5);
+  white-space: pre-line;
+}
+
+.body {
+  margin-left: 2rem;
+}
+
+.intro {
+  padding-left: clamp(24px, 6vw, 100px);
+  padding-block: clamp(16px, 3vw, 40px);
+}
+
+.body {
+  padding-right: clamp(24px, 6vw, 100px);
+  padding-block: clamp(16px, 3vw, 40px);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.cover,
+.backcover {
+  aspect-ratio: 1 / 1;
+}
+
+.plaat {
+  aspect-ratio: 2 / 3;
+}
+
+.navRow {
+  margin-top: auto;
+  padding-bottom: clamp(8px, 2vw, 32px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 64rem) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .cover,
+  .backcover {
+    aspect-ratio: 4 / 3;
+  }
+  .plaat {
+    aspect-ratio: 3 / 4;
+  }
+  .intro,
+  .body {
+    margin: 0;
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+  .navRow {
+    margin-top: clamp(24px, 4vw, 48px);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 36rem) {
+  .cover,
+  .backcover,
+  .plaat {
+    aspect-ratio: auto;
+  }
+}
