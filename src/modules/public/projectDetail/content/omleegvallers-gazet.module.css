@@ -1,0 +1,138 @@
+/* Full-bleed editorial masonry built as three stacked bands. Outer images
+   touch the page edges; only the text and nav get a right gutter. */
+.page {
+  --gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  aspect-ratio: 1/1 !important;
+}
+
+/* ---------- Band 1: cover (2x2) | two smalls + text ---------- */
+.band1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+.cover {
+  /* stretches to the full band height set by the right column */
+  height: 100%;
+}
+
+.band1right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.smalls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+.smalls img {
+  aspect-ratio: 3 / 2;
+}
+
+.text {
+  flex: 1;
+  margin: 0;
+  align-self: start;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--mantine-color-brand-5);
+  white-space: pre-line;
+  /* keep copy off the right page edge while images stay full-bleed */
+  padding-right: clamp(24px, 6vw, 100px);
+  padding-top: clamp(8px, 1.5vw, 24px);
+}
+
+/* ---------- Band 2: four spreads in a row ---------- */
+.band2 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+.band2 img {
+  aspect-ratio: 1 / 1;
+}
+
+/* ---------- Band 3: impe (2x2) | hand pic + nav ---------- */
+.band3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.impe {
+  aspect-ratio: 1/1;
+}
+
+.band3right {
+  display: flex;
+  flex-direction: column;
+}
+
+.band3right .hand {
+  align-self: flex-start;
+  width: 60%;
+  aspect-ratio: 1/1;
+}
+
+.navRow {
+  margin-top: clamp(32px, 4vw, 64px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 64rem) {
+  .band1 {
+    grid-template-columns: 1fr;
+  }
+  .cover {
+    aspect-ratio: 4 / 3;
+    height: auto;
+  }
+  .band2 {
+    grid-template-columns: 1fr 1fr;
+  }
+  .band3 {
+    grid-template-columns: 1fr;
+  }
+  .band3right .hand {
+    width: 60%;
+  }
+  .text {
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 36rem) {
+  .smalls {
+    grid-template-columns: 1fr;
+  }
+  .band2 {
+    grid-template-columns: 1fr;
+  }
+  .band2 img {
+    aspect-ratio: 3 / 2;
+  }
+  .band3right .hand {
+    width: 100%;
+  }
+}

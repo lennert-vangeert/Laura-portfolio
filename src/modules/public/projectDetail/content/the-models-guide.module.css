@@ -1,0 +1,138 @@
+/* Full-bleed editorial masonry. Outer images touch the page edges; only the
+   text and nav get a gutter. */
+.page {
+  --gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--mantine-color-brand-5);
+  white-space: pre-line;
+  padding-right: clamp(24px, 6vw, 100px);
+  padding-top: clamp(16px, 3vw, 48px);
+}
+
+/* ---------- Upper: avocado+toast (left) | cover+body (right) ----------
+   Two independent column flows so the left column interlocks with the
+   taller right column (the big cover). */
+.upper {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.upperLeft,
+.upperRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.avocado {
+  aspect-ratio: 4 / 3;
+}
+
+.toast {
+  aspect-ratio: 3 / 2;
+}
+
+.cover {
+  aspect-ratio: 5 / 4;
+}
+
+/* ---------- Lower: inhoud+sandwich (left) | keukentools+introRed+nav (right) ----------
+   Two independent column flows so the bands interlock. */
+.lower {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.lowerLeft,
+.lowerRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.inhoud {
+  aspect-ratio: 4 / 3;
+}
+
+.lowerLeft .sandwich {
+  width: 62%;
+  align-self: flex-end;
+  aspect-ratio: 3 / 2;
+}
+
+.keukentools {
+  aspect-ratio: 3 / 2;
+}
+
+.lowerRight .introRed {
+  width: 78%;
+  aspect-ratio: 4 / 3;
+}
+
+.navRow {
+  margin-top: auto;
+  padding-bottom: clamp(8px, 2vw, 32px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 64rem) {
+  .upper,
+  .lower {
+    grid-template-columns: 1fr;
+  }
+  .avocado,
+  .cover,
+  .toast,
+  .inhoud,
+  .keukentools {
+    aspect-ratio: 3 / 2;
+  }
+  .lowerLeft .sandwich,
+  .lowerRight .introRed {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+  }
+  .body {
+    align-self: stretch;
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+  .navRow {
+    margin-top: clamp(24px, 4vw, 48px);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 36rem) {
+  .avocado,
+  .cover,
+  .toast,
+  .inhoud,
+  .keukentools,
+  .lowerLeft .sandwich,
+  .lowerRight .introRed {
+    aspect-ratio: auto;
+  }
+}

@@ -1,0 +1,143 @@
+/* Full-bleed editorial masonry built as three stacked bands. Outer images
+   touch the page edges; only the text and nav get a gutter. */
+.page {
+  --gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.intro,
+.body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--mantine-color-brand-5);
+  white-space: pre-line;
+}
+
+.body {
+  margin: 2rem 0 0 2rem;
+}
+
+/* ---------- Band 1: laptop + intro (left) | tall signage (right) ---------- */
+.band1 {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: var(--gap);
+}
+
+.band1left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.website {
+  aspect-ratio: 3 / 2;
+}
+
+.intro {
+  flex: 1;
+  align-self: start;
+  padding-left: clamp(24px, 6vw, 100px);
+  padding-top: clamp(8px, 1.5vw, 24px);
+  padding-right: clamp(8px, 1.5vw, 24px);
+}
+
+.band1 .signage {
+  height: 100%;
+}
+
+/* ---------- Lower: billboard+insta (left) | body+hands+nav (right) ----------
+   Two independent column flows so the left (taller) column's insta rises into
+   the right column's vertical space — the two bands interlock. */
+.lower {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.lowerLeft,
+.lowerRight {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.billboard {
+  aspect-ratio: 5 / 3;
+}
+
+.insta {
+  aspect-ratio: 7 / 5;
+}
+
+.body {
+  align-self: start;
+  padding-right: clamp(24px, 6vw, 100px);
+  padding-bottom: clamp(8px, 1.5vw, 24px);
+}
+
+.hands {
+  aspect-ratio: 3 / 2;
+}
+
+/* nav pinned to the bottom of the right column (aligns near the insta bottom) */
+.navRow {
+  margin-top: auto;
+  padding-bottom: clamp(8px, 2vw, 32px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 64rem) {
+  .band1,
+  .lower {
+    grid-template-columns: 1fr;
+  }
+  .band1 .signage {
+    height: auto;
+  }
+  .website,
+  .band1 .signage,
+  .billboard,
+  .hands,
+  .insta {
+    aspect-ratio: 3 / 2;
+  }
+  .intro {
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+  .body {
+    margin: 0;
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+  .navRow {
+    margin-top: clamp(24px, 4vw, 48px);
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 36rem) {
+  .website,
+  .band1 .signage,
+  .billboard,
+  .hands,
+  .insta {
+    aspect-ratio: auto;
+  }
+}

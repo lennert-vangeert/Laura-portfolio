@@ -15,42 +15,7 @@
   margin: 0 0 clamp(32px, 4vw, 64px);
 }
 
+/* Full-bleed: content owns its own spacing and reaches the page edges. */
 .content {
   width: 100%;
-}
-
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin-top: clamp(48px, 6vw, 96px);
-  padding-top: clamp(24px, 3vw, 40px);
-  border-top: 1px solid var(--mantine-color-brand-5);
-}
-
-.navLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: "Nunito", sans-serif;
-  font-weight: 600;
-  font-size: clamp(14px, 1.5vw, 18px);
-  color: var(--mantine-color-brand-5);
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.navLinkNext {
-  text-align: right;
-}
-
-.navLink:hover {
-  opacity: 0.7;
-}
-
-@media (max-width: 36rem) {
-  .nav {
-    gap: 12px;
-  }
 }

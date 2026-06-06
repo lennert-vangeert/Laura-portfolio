@@ -1,0 +1,102 @@
+/* Full-bleed two-column block. Outer images touch the page edges; only the
+   text and nav get a gutter. Columns flow independently. */
+.page {
+  --gap: clamp(8px, 1vw, 14px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.page img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.intro,
+.body {
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+  font-weight: 500;
+  font-size: clamp(15px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--mantine-color-brand-5);
+  white-space: pre-line;
+}
+
+.body {
+  margin-top: 2rem !important;
+}
+
+.intro {
+  padding-right: clamp(24px, 6vw, 100px);
+  padding-bottom: clamp(16px, 3vw, 40px);
+}
+
+/* body sits centered in the space below the box (matches the reference) */
+.body {
+  margin-block: auto;
+  padding-left: clamp(24px, 6vw, 100px);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+.left,
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.box,
+.floating {
+  aspect-ratio: 4 / 3;
+}
+
+.navRow {
+  margin-top: auto;
+  padding-bottom: clamp(8px, 2vw, 32px);
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 64rem) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+  .body {
+    margin-block: 0;
+  }
+  .intro,
+  .body {
+    padding-left: clamp(24px, 6vw, 100px);
+    padding-right: clamp(24px, 6vw, 100px);
+    padding-block: clamp(16px, 5vw, 32px);
+  }
+  .navRow {
+    margin-top: clamp(24px, 4vw, 48px);
+  }
+  /* image before its text in the right column when stacked */
+  .floating {
+    order: 1;
+  }
+  .intro {
+    order: 2;
+  }
+  .navRow {
+    order: 3;
+  }
+}
+
+/* ---------- Phone ---------- */
+@media (max-width: 36rem) {
+  .box,
+  .floating {
+    aspect-ratio: auto;
+  }
+}
