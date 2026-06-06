@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rozha+One&display=swap');
-
+/* Fonts (Nunito + Rozha One) are loaded via <link> in index.html with
+   preconnect, so first paint isn't blocked on a render-blocking @import. */
 
 /* Title */
 /* .rozha-one-regular {

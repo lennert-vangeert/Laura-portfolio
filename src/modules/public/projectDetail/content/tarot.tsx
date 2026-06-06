@@ -14,12 +14,12 @@ const Tarot = () => {
     <div className={styles.page}>
       <section className={styles.split}>
         <div className={styles.left}>
-          <img src={img.box} alt="Tarot — deck box and card" className={styles.box} />
+          <img loading="eager" fetchPriority="high" decoding="async" src={img.box} alt="Tarot — deck box and card" className={styles.box} />
           <p className={styles.body}>{t("projects.tarot.body")}</p>
         </div>
         <div className={styles.right}>
           <p className={styles.intro}>{t("projects.tarot.intro")}</p>
-          <img src={img.floating} alt="Tarot — floating cards" className={styles.floating} />
+          <img loading="lazy" decoding="async" src={img.floating} alt="Tarot — floating cards" className={styles.floating} />
           <Box px={mainMargin} className={styles.navRow}>
             <ProjectNav slug="tarot" />
           </Box>

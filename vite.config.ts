@@ -48,4 +48,15 @@ export default defineConfig({
       "@tabler/icons-react": "@tabler/icons-react/dist/esm/icons/index.mjs", // Adjust to fix chunck problem with tabler icons https://github.com/tabler/tabler-icons/issues/1233#issuecomment-2428245119
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Split rarely-changing vendor deps into their own long-cached chunks.
+        manualChunks: {
+          react: ["react", "react-dom", "react-router-dom"],
+          mantine: ["@mantine/core", "@mantine/hooks"],
+        },
+      },
+    },
+  },
 });

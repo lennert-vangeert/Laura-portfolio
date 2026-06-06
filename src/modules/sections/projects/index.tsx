@@ -21,7 +21,7 @@ const Projects = () => {
               to={tL(`/projects/${project.slug}`)}
               className={styles[`cell${i + 1}`]}
             >
-              <img src={project.image} alt={t(project.titleKey)} />
+              <img loading="lazy" decoding="async" src={project.image} alt={t(project.titleKey)} />
             </Link>
           ))}
         </div>
