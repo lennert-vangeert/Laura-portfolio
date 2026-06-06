@@ -1,0 +1,42 @@
+.projects {
+  background-color: var(--mantine-color-cream-5);
+  width: 100%;
+  padding-top: clamp(48px, 6vw, 100px);
+  padding-bottom: clamp(48px, 6vw, 100px);
+}
+
+.title {
+  font-family: "Rozha One", serif;
+  font-weight: 400;
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1.1;
+  color: var(--mantine-color-brand-5);
+  text-align: center;
+  margin: 0 0 clamp(32px, 4vw, 64px);
+}
+
+.masonry {
+  column-count: 3;
+  column-gap: 14px;
+}
+
+.masonry img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  break-inside: avoid;
+}
+
+@media (max-width: 58.75rem) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 36rem) {
+  .masonry {
+    column-count: 1;
+  }
+}

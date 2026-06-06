@@ -40,9 +40,9 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
   const isBigTablet = useMediaQuery(`(max-width: ${theme.breakpoints.xl})`);
 
   const margin = useMemo(() => {
-    if (isMobile) return "2.5rem";
-    if (isTablet) return "5rem";
-    return "9rem";
+    if (isMobile) return "24px";
+    if (isTablet) return "60px";
+    return "100px";
   }, [isMobile, isTablet]);
 
   const gridCols = useMemo(() => {
@@ -74,7 +74,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
       <AppShell>
         <Header />
         <Box>
-          {/* Render direct children if provided, otherwise fallback to nested routes */}
+          {/* Sections own their horizontal spacing (full-bleed vs. mainMargin gutter) */}
           {children ?? <Outlet />}
         </Box>
       </AppShell>

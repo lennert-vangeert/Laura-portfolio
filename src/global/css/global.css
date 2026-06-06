@@ -1,39 +1,7 @@
-:root {
-  --button-hover: #fdfdfd;
-}
-
 body {
   background-color: var(--mantine-color-body);
 }
 a {
   color: inherit;
-  text-decoration: none;
-}
-
-/* button */
-.mantine-Button-root {
-  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  border: 2px solid #000;
-}
-
-.mantine-Button-root:hover {
-  background-color: inherit;
-  transition: border 0.2s ease-in-out, background-color 0.2s ease-in-out;
-  border: 2px solid var(--mantine-color-styling-0);
-}
-.mantine-Button-root:hover .mantine-Button-label {
-  color: var(--mantine-color-styling-0);
-  transition: color 0.2s ease-in-out;
-}
-
-/* anchor */
-
-.mantine-Anchor-root {
-  transition: color 0.2s ease-in-out;
-}
-
-.mantine-Anchor-root:hover {
-  color: var(--mantine-color-styling-0);
-  transition: color 0.2s ease-in-out;
   text-decoration: none;
 }

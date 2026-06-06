@@ -1,25 +1,79 @@
-import { AppShellHeader, Box, Group } from "@mantine/core";
-import AppIcon from "@common/appIcon/appIcon";
+import {
+  AppShellHeader,
+  Box,
+  Burger,
+  Drawer,
+  Group,
+  Stack,
+} from "@mantine/core";
 import LanguageSelect from "@common/languageSelect";
+import PillButton from "@common/pillButton";
 import { Link } from "react-router-dom";
 import { useTranslate } from "@global/localization";
 import { RootState } from "@global/store/store";
 import { useSelector } from "react-redux";
+import { useDisclosure } from "@mantine/hooks";
+import styles from "./header.module.css";
 
 const Header = () => {
-  const { tL } = useTranslate();
-  const { mainMargin } = useSelector((state: RootState) => state.ui);
+  const { tL, t } = useTranslate();
+  const { mainMargin, isTablet } = useSelector((state: RootState) => state.ui);
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
-    <AppShellHeader pos="relative" h="10vh" px={mainMargin} withBorder={false}>
-      <Group justify="space-between" h="100%">
-        <Box>
-          <Link to={tL("/")}>
-            <AppIcon />
-          </Link>
-        </Box>
-        <LanguageSelect />
+    <AppShellHeader pos="relative" px={mainMargin} pt={30} pb={30} withBorder={false}>
+      <Group justify="space-between" align="center" wrap="nowrap">
+        <Link to={tL("/")} className={styles.logo}>
+          {"L\\Volkaert"}
+        </Link>
+
+        {isTablet ? (
+          <Group gap="lg" align="center" wrap="nowrap">
+            <LanguageSelect />
+            <Burger
+              opened={opened}
+              onClick={open}
+              aria-label="Toggle navigation"
+              color="var(--mantine-color-brand-5)"
+            />
+          </Group>
+        ) : (
+          <Group gap={25} align="center" wrap="nowrap">
+            <Group gap={20} align="center" wrap="nowrap">
+              <Link to="#" className={styles.navLink}>
+                {t("Projects")}
+              </Link>
+              <Box className={styles.divider} />
+              <Link to="#" className={styles.navLink}>
+                {t("About me")}
+              </Link>
+            </Group>
+            <PillButton to="#">{t("Contact")}</PillButton>
+            <LanguageSelect />
+          </Group>
+        )}
       </Group>
+
+      <Drawer
+        opened={opened}
+        onClose={close}
+        position="right"
+        title={t("Menu")}
+        size="80%"
+        overlayProps={{ blur: 4 }}
+      >
+        <Stack gap="xl" align="start" mt="xl">
+          <Link to="#" className={styles.navLink} onClick={close}>
+            {t("Projects")}
+          </Link>
+          <Link to="#" className={styles.navLink} onClick={close}>
+            {t("About me")}
+          </Link>
+          <PillButton to="#" onClick={close}>
+            {t("Contact")}
+          </PillButton>
+        </Stack>
+      </Drawer>
     </AppShellHeader>
   );
 };
