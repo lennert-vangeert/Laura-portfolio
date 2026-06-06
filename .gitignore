@@ -15,9 +15,11 @@ jspm_packages/
 # TypeScript
 *.tsbuildinfo
 
-# React
+# React / Vite
 build/
 dist/
+dist-ssr/
+*.local
 .DS_Store
 
 # Environment variables
