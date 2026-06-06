@@ -1,0 +1,22 @@
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(16px, 2vw, 32px);
+}
+
+.image {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.note {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(16px, 1.6vw, 20px);
+  color: var(--mantine-color-brand-5);
+  opacity: 0.6;
+  margin: 0;
+}

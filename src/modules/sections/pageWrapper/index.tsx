@@ -1,9 +1,11 @@
 import { AppShell, Box, useMantineTheme } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { ReactNode, useEffect, useMemo } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import Header from "../header";
+import Footer from "../footer";
+import { delocalizeURL } from "@global/localization";
 
 // Redux
 import ScrollToTop from "@common/scrollToTop";
@@ -32,6 +34,10 @@ type PageWrapperProps = {
 const PageWrapper = ({ children }: PageWrapperProps) => {
   const theme = useMantineTheme();
   const dispatch = useDispatch<AppDispatch>();
+  const { pathname } = useLocation();
+
+  // Home gets the "big" footer (contact section); every other page the bar only.
+  const isHome = delocalizeURL(pathname) === "/";
 
   // ----- MEDIA QUERY BOOLEANS -----
   const isMobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm})`);
@@ -77,6 +83,7 @@ const PageWrapper = ({ children }: PageWrapperProps) => {
           {/* Sections own their horizontal spacing (full-bleed vs. mainMargin gutter) */}
           {children ?? <Outlet />}
         </Box>
+        <Footer variant={isHome ? "big" : "normal"} />
       </AppShell>
     </>
   );
