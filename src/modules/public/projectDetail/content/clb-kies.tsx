@@ -10,11 +10,28 @@ const ClbKies = () => {
   const { t } = useTranslate();
   const { mainMargin } = useSelector((state: RootState) => state.ui);
 
+  // The intro ends with the SAM platform URL on its own line — split it out
+  // so it renders as a clickable link instead of plain text.
+  const intro = t("projects.clb-kies.intro");
+  const urlMatch = intro.match(/(https?:\/\/\S+)/);
+  const introText = urlMatch ? intro.slice(0, urlMatch.index).trimEnd() : intro;
+  const introUrl = urlMatch?.[0];
+
   return (
     <>
       <div className={styles.masonry}>
         <img loading="eager" fetchPriority="high" decoding="async" src={img.omslag} alt="CLB Kies! — campaign posters" className={styles.big} />
-        <p className={`${styles.txt} ${styles.wide}`}>{t("projects.clb-kies.intro")}</p>
+        <p className={`${styles.txt} ${styles.wide}`}>
+          {introText}
+          {introUrl && (
+            <>
+              {"\n"}
+              <a href={introUrl} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                {introUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+              </a>
+            </>
+          )}
+        </p>
         <img loading="lazy" decoding="async" src={img.stickers} alt="CLB Kies! — stickers on a laptop" />
         <img loading="lazy" decoding="async" src={img.video3} alt="CLB Kies! — interactive school map" />
         <p className={`${styles.txt} ${styles.wide}`}>{t("projects.clb-kies.within")}</p>

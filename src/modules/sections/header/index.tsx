@@ -61,6 +61,9 @@ const Header = () => {
         title={t("Menu")}
         size="80%"
         overlayProps={{ blur: 4 }}
+        styles={{
+          body: { height: "calc(100% - 60px)", display: "flex", flexDirection: "column" },
+        }}
       >
         <Stack gap="xl" align="start" mt="xl">
           <Link to={tL("/#projects")} className={styles.navLink} onClick={close}>
@@ -69,10 +72,10 @@ const Header = () => {
           <Link to={tL("/#about")} className={styles.navLink} onClick={close}>
             {t("About me")}
           </Link>
-          <PillButton to={tL("/#contact")} onClick={close}>
-            {t("Contact")}
-          </PillButton>
         </Stack>
+        <PillButton to={tL("/#contact")} onClick={close} className={styles.drawerContact}>
+          {t("Contact")}
+        </PillButton>
       </Drawer>
     </AppShellHeader>
   );

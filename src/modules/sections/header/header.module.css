@@ -25,3 +25,8 @@
   background-color: var(--mantine-color-brand-5);
   border-radius: 1px;
 }
+
+.drawerContact {
+  width: 100%;
+  margin-top: auto;
+}

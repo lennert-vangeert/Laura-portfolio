@@ -70,7 +70,7 @@ const Footer = ({ variant = "normal" }: FooterProps) => {
       )}
 
       <Box px={mainMargin} className={styles.bar}>
-        <p className={styles.copyright}>{t("footer.copyright")}</p>
+        <p className={styles.copyright}>© {String(new Date().getFullYear())} - {t("footer.copyright")}</p>
         <p className={styles.credit}>
           {t("footer.webDevBy")}{" "}
           <a
