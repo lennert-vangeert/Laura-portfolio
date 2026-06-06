@@ -5,12 +5,9 @@
 }
 
 .inner {
-  max-width: 1062px;
-  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: clamp(20px, 3vw, 40px);
+  gap: clamp(32px, 4vw, 56px);
 }
 
 .title {
@@ -21,9 +18,20 @@
   color: var(--mantine-color-brand-5);
   text-align: center;
   margin: 0;
+  margin-bottom: 4rem;
+}
+
+/* Bio left, CV callout right — vertically centered against the bio. */
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(40px, 6vw, 100px);
 }
 
 .bio {
+  flex: 0 1 62%;
+  max-width: 62ch;
   font-family: "Nunito", sans-serif;
   font-weight: 600;
   font-size: clamp(16px, 1.5vw, 24px);
@@ -34,10 +42,11 @@
 }
 
 .cv {
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
+  align-items: flex-start;
+  gap: clamp(14px, 1.5vw, 20px);
 }
 
 .cvHint {
@@ -45,13 +54,14 @@
   font-weight: 600;
   font-size: clamp(16px, 1.5vw, 24px);
   color: var(--mantine-color-brand-5);
-  text-align: center;
+  text-align: left;
   margin: 0;
 }
 
 .cvDutch {
   display: inline-flex;
   align-items: center;
+  align-self: flex-end;
   gap: 8px;
   font-family: "Nunito", sans-serif;
   font-weight: 600;
@@ -62,4 +72,22 @@
 
 .cvDutch:hover {
   opacity: 0.7;
+}
+
+/* Tablet/mobile: stack the bio and CV callout, centered. */
+@media (max-width: 58.75rem) {
+  .content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bio {
+    flex: none;
+    max-width: none;
+  }
+  .cv {
+    align-items: center;
+  }
+  .cvHint {
+    text-align: center;
+  }
 }

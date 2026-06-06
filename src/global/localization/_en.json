@@ -20,7 +20,11 @@
 
   "about.title": "About Me",
   "about.bio": "Hi, I'm Laura Volkaert, a graphic designer with a passion for thoughtful design and visual communication.\n\nAfter graduating in Graphic and Digital Media, I'm currently expanding my skills in SME Management to deepen my understanding of the business side of creativity.\nThroughout my studies, I've worked on a wide range of projects from a rebranding for a jazz festival to editorial and print designs such as cookbooks, newspapers, and posters. These experiences have strengthened my eye for detail, my understanding of print processes, and my ability to translate ideas into clear, expressive visuals.\n\nI value curiosity, passion, and integrity, qualities that drive me to keep learning, experiment with new tools, and deliver work that's both precise and creative. When I'm not designing, you'll probably find me on the volleyball court or behind my camera, exploring new perspectives through photography.",
-  "about.cvHint": "Feel free to explore my CV",
   "about.cvEnglish": "My CV (English)",
-  "about.cvDutch": "My CV (Dutch)"
+  "about.cvDutch": "My CV (Dutch)",
+
+  "footer.heading1": "Don't be shy,",
+  "footer.heading2": "Just say hi!",
+  "footer.copyright": "© 2025 Laura Volkaert - All rights reserved.",
+  "footer.webDevBy": "Web development by:"
 }

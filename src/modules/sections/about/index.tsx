@@ -14,15 +14,18 @@ const About = () => {
   return (
     <Box component="section" className={styles.about} px={mainMargin}>
       <div className={styles.inner}>
-        <h2 className={styles.title}>{t("about.title")}</h2>
-        <p className={styles.bio}>{t("about.bio")}</p>
-        <div className={styles.cv}>
-          <p className={styles.cvHint}>{t("about.cvHint")}</p>
-          <PillButton to="#">{t("about.cvEnglish")}</PillButton>
-          <Link to="#" className={styles.cvDutch}>
-            {t("about.cvDutch")}
-            <IconArrowRight size={20} stroke={2} />
-          </Link>
+        <div className={styles.content}>
+        <Box>
+          <h2 className={styles.title}>{t("about.title")}</h2>
+            <p className={styles.bio}>{t("about.bio")}</p>
+        </Box>
+          <div className={styles.cv}>
+            <PillButton to="#">{t("about.cvEnglish")}</PillButton>
+            <Link to="#" className={styles.cvDutch}>
+              {t("about.cvDutch")}
+              <IconArrowRight size={20} stroke={2} />
+            </Link>
+          </div>
         </div>
       </div>
     </Box>

@@ -15,7 +15,12 @@ const Projects = () => {
         <h2 className={styles.title}>{t("projects.title")}</h2>
         <div className={styles.masonry}>
           {projectImages.map((src, i) => (
-            <img key={i} src={src} alt={`Project ${i + 1}`} />
+            <img
+              key={i}
+              src={src}
+              alt={`Project ${i + 1}`}
+              className={styles[`cell${i + 1}`]}
+            />
           ))}
         </div>
       </Box>

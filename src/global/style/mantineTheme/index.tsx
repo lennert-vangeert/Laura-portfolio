@@ -14,7 +14,7 @@ const colors = {
   dark: "#293644",
   medium: "#6F7881",
   light: "#B9C2CC",
-  mainBackground: "#FDFDFD", // background for mantine components
+  mainBackground: "#F7F2EB", // background for mantine components
   backgroundTransparent: "transparent",
   warning: "#FFD676",
   brand: "#081F5C", // new brand blue (logo, nav, primary)

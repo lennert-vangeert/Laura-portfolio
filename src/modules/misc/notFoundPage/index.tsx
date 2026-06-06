@@ -1,6 +1,7 @@
 import Head from "@global/head";
 import { Center } from "@mantine/core";
 import { useTranslation } from "react-i18next";
+import Footer from "../../sections/footer";
 
 const NotFoundPage = () => {
   const { t } = useTranslation();
@@ -10,6 +11,7 @@ const NotFoundPage = () => {
       <Center h="100vh">
         <h1>{t('404 - Not Found')}</h1>
       </Center>
+      <Footer variant="normal" />
     </>
   );
 };

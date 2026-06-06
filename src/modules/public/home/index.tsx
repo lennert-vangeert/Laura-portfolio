@@ -4,6 +4,8 @@ import Hero from "../../sections/hero";
 import Intro from "../../sections/intro";
 import Projects from "../../sections/projects";
 import About from "../../sections/about";
+import Marquee from "../../sections/marquee";
+import Footer from "../../sections/footer";
 
 /**
  * Home page — stacked sections (hero, projects, about).
@@ -18,6 +20,8 @@ const Home = () => {
       <Intro />
       <Projects />
       <About />
+      <Marquee />
+      <Footer variant="big" />
     </>
   );
 };
