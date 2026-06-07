@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import "@global/style/mantineTheme/fonts.css";
-import "@mantine/core/styles.css";
+import "@mantine/core/styles.layer.css";
 import "@global/css/global.css";
 import { MantineStyles } from "@global/style/mantineTheme/index.tsx";
 import { HelmetProvider } from "react-helmet-async";

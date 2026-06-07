@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import { Box, Image, Text } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { RootState } from "@global/store/store";
 import { useTranslate } from "@global/localization";
@@ -11,21 +11,21 @@ const Tarot = () => {
   const { mainMargin } = useSelector((state: RootState) => state.ui);
 
   return (
-    <div className={styles.page}>
-      <section className={styles.split}>
-        <div className={styles.left}>
-          <img loading="eager" fetchPriority="high" decoding="async" src={img.box} alt="Tarot — deck box and card" className={styles.box} />
-          <p className={styles.body}>{t("projects.tarot.body")}</p>
-        </div>
-        <div className={styles.right}>
-          <p className={styles.intro}>{t("projects.tarot.intro")}</p>
-          <img loading="lazy" decoding="async" src={img.floating} alt="Tarot — floating cards" className={styles.floating} />
+    <Box className={styles.page}>
+      <Box component="section" className={styles.split}>
+        <Box className={styles.left}>
+          <Image loading="eager" fetchPriority="high" decoding="async" src={img.box} alt="Tarot — deck box and card" className={styles.box} />
+          <Text className={styles.body}>{t("projects.tarot.body")}</Text>
+        </Box>
+        <Box className={styles.right}>
+          <Text className={styles.intro}>{t("projects.tarot.intro")}</Text>
+          <Image loading="lazy" decoding="async" src={img.floating} alt="Tarot — floating cards" className={styles.floating} />
           <Box px={mainMargin} className={styles.navRow}>
             <ProjectNav slug="tarot" />
           </Box>
-        </div>
-      </section>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

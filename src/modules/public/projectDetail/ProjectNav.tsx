@@ -1,3 +1,4 @@
+import { Box } from "@mantine/core";
 import { Link } from "react-router-dom";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { useTranslate } from "@global/localization";
@@ -23,7 +24,7 @@ const ProjectNav = ({ slug }: ProjectNavProps) => {
   const { prev, next } = adjacent;
 
   return (
-    <nav className={styles.nav} aria-label="Project navigation">
+    <Box component="nav" className={styles.nav} aria-label="Project navigation">
       <Link
         to={tL(`/projects/${next.slug}`)}
         className={styles.navLink}
@@ -44,7 +45,7 @@ const ProjectNav = ({ slug }: ProjectNavProps) => {
         <IconArrowLeft size={20} stroke={2} />
         {t(prev.titleKey)}
       </Link>
-    </nav>
+    </Box>
   );
 };
 

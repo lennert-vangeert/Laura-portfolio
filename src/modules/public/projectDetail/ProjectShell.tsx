@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Box } from "@mantine/core";
+import { Box, Title } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { RootState } from "@global/store/store";
 import { useTranslate } from "@global/localization";
@@ -30,10 +30,12 @@ const ProjectShell = ({ slug, children }: ProjectShellProps) => {
   return (
     <Box mih="100vh" component="section" className={styles.shell}>
       <Box px={mainMargin}>
-        <h1 className={styles.title}>{t(current.titleKey)}</h1>
+        <Title order={1} className={styles.title}>
+          {t(current.titleKey)}
+        </Title>
       </Box>
 
-      <div className={styles.content}>{children}</div>
+      <Box className={styles.content}>{children}</Box>
     </Box>
   );
 };

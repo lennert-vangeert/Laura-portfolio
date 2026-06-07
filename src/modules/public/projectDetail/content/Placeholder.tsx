@@ -1,4 +1,4 @@
-import { Box } from "@mantine/core";
+import { Box, Image, Text } from "@mantine/core";
 import { useSelector } from "react-redux";
 import { RootState } from "@global/store/store";
 import { projects } from "@assets/projects";
@@ -16,9 +16,9 @@ const Placeholder = ({ slug }: { slug: string }) => {
   return (
     <Box px={mainMargin} className={styles.placeholder}>
       {project && (
-        <img loading="lazy" decoding="async" src={project.image} alt="" className={styles.image} />
+        <Image loading="lazy" decoding="async" src={project.image} alt="" className={styles.image} />
       )}
-      <p className={styles.note}>Content coming soon</p>
+      <Text className={styles.note}>Content coming soon</Text>
       <ProjectNav slug={slug} />
     </Box>
   );
