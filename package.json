@@ -7,6 +7,7 @@
     "dev": "vite",
     "prebuild": "npm run generate-sitemap",
     "build": "tsc -b && vite build",
+    "postbuild": "tsx scripts/prerender.ts",
     "lint": "eslint .",
     "preview": "vite preview",
     "generate-sitemap": "tsx scripts/generate-sitemap.ts"
@@ -23,7 +24,6 @@
     "i18next-browser-languagedetector": "^8.2.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-helmet-async": "^3.0.0",
     "react-i18next": "^17.0.8",
     "react-redux": "^9.3.0",
     "react-router-dom": "^7.17.0",

@@ -42,7 +42,11 @@ const ProjectDetail = () => {
 
   return (
     <>
-      <Head title={t(adjacent.current.titleKey)} description="Project by Laura Volkaert" />
+      <Head
+        title={t(adjacent.current.titleKey)}
+        description="Project by Laura Volkaert"
+        imageURL={adjacent.current.image}
+      />
       <ProjectShell slug={slug}>
         <Suspense fallback={null}>
           <Content />

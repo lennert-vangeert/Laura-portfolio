@@ -1,83 +1,83 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { useTranslate } from "@global/localization";
+import { APP_TITLE, AUTHOR, KEYWORDS, OG_LOCALE, SITE_URL } from "./siteConfig";
 
 type Props = {
+  /** Page title; " | Portfolio" is appended automatically. */
   title: string;
   description: string;
-  SEODisabled?: boolean;
+  /** Social card image — absolute URL or an app-relative "/assets/…" path.
+   *  When omitted, og:image / twitter:image are not rendered. */
   imageURL?: string;
+  /** Keep this page out of search indexes. */
+  noindex?: boolean;
 };
 
-const appTitle = "Portfolio";
-const keyWords = "portfolio, laura, volkaert, design, branding";
-const author = "Laura Volkaert";
-const Head = ({ title, description, SEODisabled = false, imageURL }: Props) => {
+/**
+ * Per-page document metadata. React 19 natively hoists <title>/<meta>/<link>
+ * rendered anywhere in the tree into <head>, so no Helmet/provider is needed.
+ * (The inline JSON-LD <script> is not hoisted — it renders in place, which is
+ * still valid: crawlers read JSON-LD anywhere in the document.)
+ */
+const Head = ({ title, description, imageURL, noindex = false }: Props) => {
+  const { locale } = useTranslate();
+  const { pathname } = useLocation();
+
+  const fullTitle = `${title} | ${APP_TITLE}`;
+  const url = `${SITE_URL}${pathname}`;
+  const image = imageURL
+    ? imageURL.startsWith("http")
+      ? imageURL
+      : `${SITE_URL}${imageURL}`
+    : undefined;
+
+  // React 19 doesn't manage <html lang>; keep it in sync with the active locale.
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
 
   return (
     <>
-      <Helmet>
-        <title>
-          {title} | {appTitle}
-        </title>
-        <meta name="description" content={description} />
-      </Helmet>
-
-      {/* Only add SEO meta tags if SEODisabled is false */}
-      {!SEODisabled && (
-        <SEOData
-          title={title}
-          description={description}
-          keywords={keyWords}
-          imageURL={imageURL}
-        />
-      )}
-    </>
-  );
-};
-
-type SEODataProps = {
-  title: string;
-  description: string;
-  imageURL?: string; // Optional image for social sharing
-  keywords?: string; // Optional list of keywords
-};
-
-const SEOData = ({
-  title,
-  description,
-  imageURL = "default-image-url.jpg", // Default image if not provided
-  keywords,
-}: SEODataProps) => {
-  return (
-    <>
-      {/* Basic Meta Tags */}
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      <meta name="author" content={author} />
-      <meta name="robots" content="index, follow" />
+      <meta name="keywords" content={KEYWORDS} />
+      <meta name="author" content={AUTHOR} />
+      <meta
+        name="robots"
+        content={noindex ? "noindex, nofollow" : "index, follow"}
+      />
+      <link rel="canonical" href={url} />
 
-      {/* Open Graph Meta Tags (For Social Media) */}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={imageURL} />
+      {/* Open Graph */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={window.location.href} />
+      <meta property="og:site_name" content={AUTHOR} />
+      <meta property="og:locale" content={OG_LOCALE[locale]} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:url" content={url} />
+      {image && <meta property="og:image" content={image} />}
 
-      {/* Twitter Card Meta Tags (For Twitter) */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
+      {/* Twitter */}
+      <meta
+        name="twitter:card"
+        content={image ? "summary_large_image" : "summary"}
+      />
+      <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={imageURL} />
+      {image && <meta name="twitter:image" content={image} />}
 
-      {/* Schema.org Structured Data (For Rich Results) */}
+      {/* Structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            name: title,
-            description: description,
-            url: window.location.href,
+            name: fullTitle,
+            description,
+            url,
+            inLanguage: locale,
           }),
         }}
       />
