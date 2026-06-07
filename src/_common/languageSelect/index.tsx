@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./languageSelect.module.css";
 import { IconWorld } from "@tabler/icons-react";
-import { useHover } from "@mantine/hooks";
 
 const LanguageSelect = () => {
-  const [, setCurrentLanguage] = useState(i18next.language);
+  const [currentLanguage, setCurrentLanguage] = useState(i18next.language);
   const navigate = useNavigate();
-  const { hovered, ref } = useHover();
+
 
   useEffect(() => {
     const handleLanguageChangeEvent = () => {
@@ -22,15 +21,6 @@ const LanguageSelect = () => {
     };
   }, []);
 
-  // const currentLanguageText = useCallback(() => {
-  //   if (currentLanguage === "en") {
-  //     return "English";
-  //   }
-  //   if (currentLanguage === "nl") {
-  //     return "Nederlands";
-  //   }
-  //   return "Select Language"; // Fallback if needed
-  // }, [currentLanguage]);
 
   const handleLanguageChange = (lang: string) => {
     // Change language via i18next and update URL to reflect the new locale
@@ -39,35 +29,36 @@ const LanguageSelect = () => {
   };
   const theme = useMantineTheme();
 
+  // i18next.language may carry a region (e.g. "en-US"); the menu values are
+  // the base codes, so normalise before matching the selected item.
+  const selectedLanguage = currentLanguage?.split("-")[0];
+
   return (
     <Group>
       <Menu shadow="md" width={200}>
-        <Menu.Target ref={ref}>
+        <Menu.Target>
           <IconWorld
             stroke={1}
             style={{
               cursor: "pointer",
-              color: hovered ? theme.colors.styling[0] : theme.black,
+              color: theme.colors.styling[0],
               transition: "color 0.2s ease",
             }}
             size={32}
           />
         </Menu.Target>
         <Menu.Dropdown>
-          <Menu.Item
-            className={styles.menuItem}
-            h="2rem"
-            onClick={() => handleLanguageChange("en")}
+          <Menu.RadioGroup
+            value={selectedLanguage}
+            onChange={handleLanguageChange}
           >
-            English
-          </Menu.Item>
-          <Menu.Item
-            className={styles.menuItem}
-            h="2rem"
-            onClick={() => handleLanguageChange("nl")}
-          >
-            Nederlands
-          </Menu.Item>
+            <Menu.RadioItem value="en" className={styles.menuItem} h="2rem">
+              English
+            </Menu.RadioItem>
+            <Menu.RadioItem value="nl" className={styles.menuItem} h="2rem">
+              Nederlands
+            </Menu.RadioItem>
+          </Menu.RadioGroup>
         </Menu.Dropdown>
       </Menu>
     </Group>
