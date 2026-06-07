@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@global/store/store";
 import { useTranslate } from "@global/localization";
 import { projects } from "@assets/projects";
+import { prefetchProject } from "../../public/projectDetail/prefetch";
 import styles from "./projects.module.css";
 
 const Projects = () => {
@@ -20,6 +21,8 @@ const Projects = () => {
               key={project.slug}
               to={tL(`/projects/${project.slug}`)}
               className={styles[`cell${i + 1}`]}
+              onMouseEnter={() => prefetchProject(project.slug)}
+              onFocus={() => prefetchProject(project.slug)}
             >
               <img loading="lazy" decoding="async" src={project.image} alt={t(project.titleKey)} />
             </Link>
