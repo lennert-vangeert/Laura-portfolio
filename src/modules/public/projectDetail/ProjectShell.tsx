@@ -28,7 +28,7 @@ const ProjectShell = ({ slug, children }: ProjectShellProps) => {
   const { current } = adjacent;
 
   return (
-    <Box component="section" className={styles.shell}>
+    <Box mih="100vh" component="section" className={styles.shell}>
       <Box px={mainMargin}>
         <h1 className={styles.title}>{t(current.titleKey)}</h1>
       </Box>

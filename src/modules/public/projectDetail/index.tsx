@@ -27,10 +27,11 @@ const ProjectDetail = () => {
       prefetchProject(adjacent.prev.slug);
       prefetchProject(adjacent.next.slug);
     };
-    const ric = window.requestIdleCallback;
+    const ric =
+      "requestIdleCallback" in window ? window.requestIdleCallback : undefined;
     const id = ric ? ric(run) : window.setTimeout(run, 1200);
     return () => {
-      if (ric) window.cancelIdleCallback?.(id as number);
+      if (ric) window.cancelIdleCallback(id as number);
       else window.clearTimeout(id as number);
     };
   }, [slug]); // eslint-disable-line react-hooks/exhaustive-deps
